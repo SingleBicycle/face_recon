@@ -1,0 +1,62 @@
+# ---- Clinical data: NEVER commit (IRB/DUA) ----
+data/
+*.dcm
+*.DCM
+DICOM/
+dicom/
+photos/
+*.nii
+*.nii.gz
+*.nrrd
+*.mha
+*.jpg
+*.jpeg
+*.JPG
+*.JPEG
+*.png
+*.heic
+*.HEIC
+*.mp4
+*.mov
+*.MOV
+*.zip
+
+# ---- Derived outputs (meshes, results) ----
+outputs/
+results/
+*.ply
+*.obj
+*.stl
+*.npz
+*.npy
+
+# ---- Model weights / checkpoints ----
+checkpoints/
+weights/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# ---- Experiment tracking ----
+wandb/
+runs/
+lightning_logs/
+
+# ---- Secrets ----
+.env
+*.token
+rclone.conf
+
+# ---- OS / editor ----
+.DS_Store
+.vscode/
+.idea/
