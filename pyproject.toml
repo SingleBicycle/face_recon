@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "facerecon"
+version = "0.1.0"
+description = "RGB-to-3D facial surface reconstruction validated against CT"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "scipy",
+    "scikit-image",
+    "trimesh",
+    "rtree",
+    "pydicom>=3.0",
+    "pylibjpeg",
+    "pylibjpeg-libjpeg",  # the clinical DICOM exports are JPEG Lossless compressed
+    "pillow",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+# Stage 2 (RGB -> 3D) also needs VGGT itself: https://github.com/facebookresearch/vggt
+recon = ["torch", "transformers>=5", "safetensors>=0.8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["gpu: needs CUDA and VGGT weights (deselect with -m 'not gpu')"]

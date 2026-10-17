@@ -1,4 +1,5 @@
 # ---- Clinical data: NEVER commit (IRB/DUA) ----
+/data
 data/
 *.dcm
 *.DCM
