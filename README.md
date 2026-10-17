@@ -98,11 +98,18 @@ All scripts take `--help`. Run them from the repo root with the venv's python.
 
 - Stages 0, 1 and 4-5 are implemented and tested on synthetic phantoms. They have also been run
   on all 26 cases.
-- The VGGT baseline runs end to end. On the first case checked, VGGT's focal length estimate was
-  only about 0.55 of the true 100 mm lens (about 1300 px against about 2320 px at 518 px). The
-  reconstruction was distorted accordingly: median error 4.7 mm, and the camera layout was
-  inconsistent. Generic feed-forward models assume ordinary fields of view, whereas clinical
-  photography is telephoto.
+- The VGGT baseline has been run on all 26 cases with fully automatic alignment (no manual
+  landmarks):
+  - Per-case median surface error: 3.9 mm (median over cases), range 1.1-10.3 mm.
+  - Points within 2 mm: 29% (median over cases).
+  - The best three cases reach 1.1-1.5 mm, so the pipeline works when the reconstruction does.
+  - VGGT's focal estimate averages about 1360 px, against about 2320 px expected for uncropped
+    100 mm photos. Generic feed-forward models assume ordinary fields of view, whereas clinical
+    photography is telephoto, and the reconstructions distort accordingly.
+  - The CT drives the alignment, so these errors are optimistic for shape. They are a reference
+    point, not a validation result.
+- A photo capture protocol for future clinic sessions (15 fixed views, one camera setup, no
+  metadata) is kept with its generator scripts under `docs/capture_protocol/`. It is not tracked in git.
 
 Next:
 
